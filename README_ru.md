@@ -50,3 +50,5 @@ SourceGraphic
   └─ Обрезка по альфе          feComposite operator="in" → результат
 
 *(Управляется тумблерами этапов enabled, aeOn, hdrOn, shOn, fxaaOn и 20 настраиваемыми параметрами, значения которых по умолчанию соответствуют пресету **«Оригинал»**).*
+
+![Preview](dgAEfHEKMV.jpg)

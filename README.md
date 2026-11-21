@@ -50,3 +50,5 @@ SourceGraphic
   └─ Alpha Clipping            feComposite operator="in" → Output
 
 *(Controlled via stage toggles enabled, aeOn, hdrOn, shOn, fxaaOn and 20 continuous filter parameters defaulting to the **Original** preset).*
+
+![Preview](dgAEfHEKMV.jpg)
