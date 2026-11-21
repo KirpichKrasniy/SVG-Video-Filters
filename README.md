@@ -35,19 +35,16 @@ manifest.json, filter.js, i18n.js, content.js, background.js, popup.html, popup.
 * **Presets:** Click built-in preset chips, enter a name + **+ Save** to create your own, or click × to delete.
 * **Backup & Reset:** Use **↓ Export .json**, **↑ Load .json**, **Reset**, or the site exclusion button at the bottom of the panel.
 
-#### 🛠 SVG Processing Pipeline
+#### 🛠 How the Pipeline Works (SourceGraphic)
 
-SourceGraphic
-  ├─ STAGE 0 · Auto-Exposure   feColorMatrix(luma) → feGaussianBlur(55)
-  │                            → feComponentTransfer(mask) → feComposite(k1=1.05, k2=1.00)
-  ├─ STAGE 1 · FakeHDR         feGaussianBlur(1.0) → feComposite(k2=1.30, k3=-0.30)
-  │                            → feComponentTransfer(9-point curve) → feColorMatrix(saturate)
-  ├─ STAGE 2 · LumaSharpen     luma → blur(1.40) → dual opposing differences (±0.24)
-  │                            → feComposite(k2=1, k3=1) → feComposite(k2=1, k3=-1)
-  ├─ STAGE 3 · FXAA            luma → blur(1.2) → edge detector |L−B| with threshold
-  │                            → edge alpha mask → edge-only stair-step smoothing
-  ├─ Blend with Original       feComposite(k2=mix, k3=1-mix)
-  └─ Alpha Clipping            feComposite operator="in" → Output
+The incoming video stream passes through a sequential four-stage pipeline inside a single SVG filter: 
+
+1. **Auto-Exposure:** Calculates a scene luminance map (feColorMatrix + wide feGaussianBlur), builds an adaptive brightness mask (feComponentTransfer), and lifts shadow details via feComposite.
+2. **FakeHDR:** Extracts local micro-contrast through blur subtraction (feGaussianBlur + feComposite), shapes tonal balance with a 9-point curve (feComponentTransfer), and boosts color saturation (feColorMatrix).
+3. **LumaSharpen:** Analyzes luminance transitions using dual opposing differences (±0.24) to crisp up edges without introducing color artifacts.
+4. **FXAA:** Detects high-contrast edges (|L−B| with a noise cutoff threshold), generates an edge alpha mask, and smooths jagged stair-stepping strictly along object boundaries.
+
+Finally, the processed output is blended with the original frame according to the mix ratio and clipped to the source alpha channel (operator="in").
 
 *(Controlled via stage toggles enabled, aeOn, hdrOn, shOn, fxaaOn and 20 continuous filter parameters defaulting to the **Original** preset).*
 
