@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KirpichKrasniy/SVG-Video-Filters/blob/main/VKNIs2dKAX.jpg">
+</p> 
+
 #### 🎬 VIDEO FILTER 1.0
 
 **Google Chrome extension for real-time SVG video enhancement.**
