@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/KirpichKrasniy/SVG-Video-Filters/blob/main/VKNIs2dKAX.png">
-</p> 
+![Preview](VKNIs2dKAX.jpg)
+
 
 #### 🎬 VIDEO FILTER 1.0
 
