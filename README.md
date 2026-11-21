@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/KirpichKrasniy/SVG-Video-Filters/blob/main/VKNIs2dKAX.jpg">
+  <img src="https://raw.githubusercontent.com/KirpichKrasniy/SVG-Video-Filters/blob/main/VKNIs2dKAX.png">
 </p> 
 
 #### 🎬 VIDEO FILTER 1.0
