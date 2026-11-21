@@ -1,5 +1,5 @@
 /**
- * VIDEO FILTER 1.0.5 — логика панели управления.
+ * VIDEO FILTER 1.0 — логика панели управления.
  *
  * Ключевые особенности:
  *   1. Контролы (ползунки, тумблеры, переключатели) создаются в DOM ОДИН РАЗ
@@ -355,7 +355,7 @@
   function exportPresetsJson() {
     var payload = {
       app: 'VIDEO FILTER',
-      version: '1.0.5',
+      version: '1.0',
       exportedAt: new Date().toISOString(),
       state: VF.mergeState(state),
       userPresets: userPresets

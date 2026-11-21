@@ -1,5 +1,5 @@
 /**
- * VIDEO FILTER 1.0.5 — content script.
+ * VIDEO FILTER 1.0 — content script.
  *
  * 1. Вставляет в документ скрытый <svg> с одним <filter>, разметку которого
  *    строит filter.js (VF.buildFilterMarkup);
