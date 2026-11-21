@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VIDEO FILTER 1.0.5</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="bars" aria-hidden="true"></div>
+
+    <header class="head">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="26" height="26">
+          <rect x="1.5" y="1.5" width="29" height="29" rx="3" fill="none" stroke="#38E08C" stroke-width="1.5" />
+          <path d="M6 22 L11 10 L16 18 L21 8 L26 22" fill="none" stroke="#38E08C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+          <circle cx="21" cy="8" r="2.2" fill="#FF9E2C" />
+        </svg>
+      </div>
+      <div class="head-text">
+        <h1>VIDEO FILTER</h1>
+        <p><span data-i18n="subtitle">SVG-фильтры для видео</span> · v1.0.5</p>
+      </div>
+      <button id="master" class="switch" type="button" role="switch" aria-checked="true" data-i18n-aria="master" aria-label="Включить или выключить фильтр">
+        <span class="knob"></span>
+        <span class="state">ON</span>
+      </button>
+    </header>
+
+    <div class="language-row">
+      <span id="languageLabel" data-i18n="language">Язык меню</span>
+      <div class="seg" role="group" aria-labelledby="languageLabel">
+        <button type="button" data-language="ru" lang="ru" aria-pressed="true">Русский</button>
+        <button type="button" data-language="en" lang="en" aria-pressed="false">English</button>
+      </div>
+    </div>
+
+    <section class="comparison-panel" aria-labelledby="comparisonTitle">
+      <div class="comparison-heading">
+        <h2 id="comparisonTitle" data-i18n="compareTitle">До / после</h2>
+        <button id="compareToggle" class="btn-tool" type="button" aria-pressed="false" data-i18n="showLine">Показать линию</button>
+      </div>
+      <p class="comparison-note" data-i18n="compareNote">Слева оригинал без фильтров. Справа все выбранные эффекты.</p>
+      <div class="comparison-range-label">
+        <label for="comparePosition" data-i18n="position">Положение линии</label>
+        <output id="compareValue" for="comparePosition">50%</output>
+      </div>
+      <input id="comparePosition" type="range" min="0" max="100" step="1" value="50" />
+      <div class="comparison-ends">
+        <span data-i18n="before">Оригинал</span>
+        <button id="compareCenter" type="button" class="link" data-i18n="center">По центру</button>
+        <span data-i18n="after">С фильтрами</span>
+      </div>
+      <p id="compareHelp" class="comparison-help"></p>
+    </section>
+
+    <section class="preset-panel" data-i18n-aria="presetPanel" aria-label="Управление пресетами">
+      <div class="presets" id="presets" role="group" data-i18n-aria="presets" aria-label="Пресеты"></div>
+      <div class="preset-tools">
+        <input
+          id="presetName"
+          class="preset-input"
+          type="text"
+          maxlength="28"
+          placeholder="Имя своего пресета…"
+          aria-label="Имя нового пресета"
+          data-i18n-placeholder="presetPlaceholder"
+          data-i18n-aria="presetName"
+        />
+        <button id="savePresetBtn" class="btn-tool primary" type="button" data-i18n="save" data-i18n-title="saveTitle" title="Сохранить текущие ползунки как свой пресет">
+          + Сохранить
+        </button>
+      </div>
+      <div class="preset-io">
+        <button id="exportPresetBtn" class="btn-tool" type="button" data-i18n="export" data-i18n-title="exportTitle" title="Скачать текущие настройки и свои пресеты в файл .json">
+          ↓ Экспорт .json
+        </button>
+        <button id="importPresetBtn" class="btn-tool" type="button" data-i18n="import" data-i18n-title="importTitle" title="Загрузить пресет или набор пресетов из файла .json">
+          ↑ Загрузить .json
+        </button>
+        <input id="importPresetFile" type="file" accept=".json,application/json" hidden />
+      </div>
+      <div id="presetStatus" class="preset-status" aria-live="polite"></div>
+    </section>
+
+    <main id="sections" class="sections"></main>
+
+    <footer class="foot">
+      <button id="siteBtn" class="ghost" type="button">Отключить на этом сайте</button>
+      <div class="hint">
+        <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> · <span data-i18n="shortcut">вкл/выкл</span> ·
+        <button id="resetBtn" class="link" type="button" data-i18n="reset">Сброс</button>
+      </div>
+    </footer>
+
+    <script src="filter.js"></script>
+    <script src="i18n.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "SVG VIDEO FILTERS",
+  "version": "1.0",
+  "description": "SVG video filters: Auto-Exposure, FakeHDR, LumaSharpen, FXAA. Before/after comparison, custom presets and RU/EN menu.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "VIDEO FILTER 1.0"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["filter.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "commands": {
+    "toggle-filter": {
+      "suggested_key": {
+        "default": "Alt+Shift+F"
+      },
+      "description": "ON/OFF Filters"
+    }
+  }
+}
